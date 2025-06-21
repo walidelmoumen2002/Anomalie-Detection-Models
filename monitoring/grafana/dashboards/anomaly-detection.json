@@ -1,0 +1,135 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Anomaly Detection Dashboard",
+    "tags": ["anomaly", "mlops"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Anomaly Detection Status",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "anomaly_detection_is_anomaly",
+            "legendFormat": "Is Anomaly"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {"color": "green", "value": 0},
+                {"color": "red", "value": 1}
+              ]
+            }
+          }
+        },
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0}
+      },
+      {
+        "id": 2,
+        "title": "Anomaly Score",
+        "type": "gauge",
+        "targets": [
+          {
+            "expr": "anomaly_detection_score",
+            "legendFormat": "Anomaly Score"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "min": 0,
+            "max": 1,
+            "thresholds": {
+              "steps": [
+                {"color": "green", "value": 0},
+                {"color": "yellow", "value": 0.5},
+                {"color": "red", "value": 0.8}
+              ]
+            }
+          }
+        },
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}
+      },
+      {
+        "id": 3,
+        "title": "System CPU Usage",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "system_cpu_usage_percent",
+            "legendFormat": "CPU %"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "max": 100
+          }
+        },
+        "gridPos": {"h": 8, "w": 8, "x": 0, "y": 8}
+      },
+      {
+        "id": 4,
+        "title": "System Memory Usage",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "system_memory_usage_percent",
+            "legendFormat": "Memory %"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "max": 100
+          }
+        },
+        "gridPos": {"h": 8, "w": 8, "x": 8, "y": 8}
+      },
+      {
+        "id": 5,
+        "title": "System Disk Usage",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "system_disk_usage_percent",
+            "legendFormat": "Disk %"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "max": 100
+          }
+        },
+        "gridPos": {"h": 8, "w": 8, "x": 16, "y": 8}
+      },
+      {
+        "id": 6,
+        "title": "Anomaly Detection Timeline",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "anomaly_detection_is_anomaly",
+            "legendFormat": "Anomaly Detected"
+          },
+          {
+            "expr": "anomaly_detection_score",
+            "legendFormat": "Anomaly Score"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 24, "x": 0, "y": 16}
+      }
+    ],
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "refresh": "5s"
+  }
+}

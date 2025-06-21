@@ -179,22 +179,20 @@ logs/
 ehthumbs.db
 Thumbs.db
 
-# Project-specific
+# Project-specific output files
 example_*
-test_*
 *_output.*
 fixed_*
+*_history.json
 
-# Kubernetes secrets
-*.yaml
-*.yml
-!kubernetes-manifests.yaml
+# Docker volumes (keep configs)
+!docker-compose.yml
+!monitoring/prometheus/*.yml
+!monitoring/grafana/dashboards/*.json
+!monitoring/grafana/datasources/*.yml
 
-# Docker files
-.dockerignore
-
-# Prometheus data
-prometheus_data/
-
-# Grafana data
-grafana_data/
+# Prometheus & Grafana data volumes
+prometheus-data/
+grafana-data/
+kafka-data/
+zookeeper-data/
