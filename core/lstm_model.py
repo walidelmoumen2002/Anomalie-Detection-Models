@@ -171,7 +171,7 @@ class LSTMModel(BaseAnomalyModel):
         """
         if input_shape is None:
             # Forme par défaut (sera mise à jour lors de l'entraînement)
-            input_shape = (self.sequence_length, 10)
+            input_shape = (self.sequence_length, 24)
         
         logger.info(f"Création architecture LSTM: input_shape={input_shape}")
         
@@ -247,7 +247,7 @@ class LSTMModel(BaseAnomalyModel):
             
             # Label correspondant à la fin de la séquence
             if y is not None:
-                y_sequences.append(y[i])
+                y_sequences.append(y.iloc[i])
         
         X_sequences = np.array(X_sequences)
         

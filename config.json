@@ -1,0 +1,41 @@
+{
+  "data": {
+    "n_samples": 10000,
+    "anomaly_rate": 0.05,
+    "test_size": 0.2,
+    "include_temporal": true
+  },
+  "models": {
+    "isolation_forest": {
+      "contamination": 0.05,
+      "n_estimators": 100
+    },
+    "random_forest": {
+      "n_estimators": 100,
+      "max_depth": 15,
+      "class_weight": "balanced"
+    },
+    "lstm": {
+      "sequence_length": 10,
+      "lstm_units": [
+        50,
+        25
+      ],
+      "epochs": 30,
+      "dropout_rate": 0.2
+    }
+  },
+  "evaluation": {
+    "primary_metric": "f1_score",
+    "min_accuracy": 0.8,
+    "min_precision": 0.75,
+    "min_recall": 0.75
+  },
+  "deployment": {
+    "model_registry": "mlflow",
+    "stage": "staging",
+    "auto_promote": false
+  },
+  "mlflow_experiment": "MLOps-Production",
+  "random_state": 42
+}
